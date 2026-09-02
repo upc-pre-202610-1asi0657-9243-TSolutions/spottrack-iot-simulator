@@ -23,3 +23,12 @@ class Signal :
             duration_ms=duration_ms,
             timestamp=datetime.now(timezone.utc).isoformat()
         )
+
+    def to_dict(self) -> dict:
+        """Payload sent to the broker (camelCase, as the backend expects)"""
+        return {
+            "deviceId": self.device_id,
+            "signalType": self.signal_type,
+            "durationMs": self.duration_ms,
+            "timestamp": self.timestamp,
+        }
